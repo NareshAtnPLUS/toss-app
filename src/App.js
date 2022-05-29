@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Button, Grid, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+
+
 
 function App() {
+  const [isHead,setIsHead] = useState(null)
+  const onTossClick = ()=> {
+    const value = Math.random()
+    console.log(value)
+    if(value>0.5){
+      setIsHead('Head')
+    } else {
+      setIsHead('Tail')
+    }
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid sx={{padding:5}} container justifyContent={"center"}>
+      <Grid container justifyContent={"center"} item xs={12}>
+        <Typography variant="h3" >Coin Tosser!?</Typography>
+      </Grid>
+      <Grid  container justifyContent={"center"} item xs={12}>
+        <Typography  variant="h4">Result is {isHead}</Typography>
+      </Grid>
+      <Grid  container justifyContent={"center"} item xs={12}>
+        <Button size="large" color="secondary"  variant="contained" onClick={()=>onTossClick()} > Toss a Coin</Button>
+      </Grid>
+    </Grid>
   );
 }
 
